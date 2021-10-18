@@ -1,0 +1,133 @@
+<div class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
+<div class="col-12 col-lg-6">
+<img class="d-block mx-lg-auto img-fluid"  width="607" height="510" src="/images/bird.jpg" Loading="lazy" alt="bird">  
+</div>
+
+<div class="col-12 col-lg-6">
+<h1 class="display-5 fw-bold mb-3"> Huge Selection of Photos </h1>
+<p class="lead">simply dummy text of the printing and typesetting industry. 
+Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+simply dummy text of the printing and typesetting industry. 
+Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+</div> <!--close 2nd "col-12 col-lg-6" -->
+
+</div><!--close very 1st div -->
+
+
+<!-- photo categories start  -->
+<h1> Photo Categories</h1>
+<div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
+
+<% if(categories != '') { %>  <!---if category is not empty, loop thru each item and display from db--> 
+<% categories.forEach(function(category, index) { %>
+<!--card 1 -->
+<a href="/categories/<%- category.name %>" class="col text-center category__link"> 
+
+<div class="category__img shadow">
+<img src="/images/<%- category.image %>" alt ="<%- category.name %>" loading="lazy">
+</div>
+<div class="pt-1"><%- category.name %></div>
+</a>
+<% }) %>
+<% } %>
+
+</div> <!--end 1st div for categories-->
+<!-- photo categories end -->
+
+<!-- Category 1 :  Nature  -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>Nature   </h2>
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(typeof photo.nature !== 'undefined' && photo.nature.length > 0) { %>
+      <% photo.nature.forEach(function(detail, index){ %>
+      <a href="/detail/<%= detail._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/images/<%= detail.image %>" alt="<%= detail.name %>" loading="lazy">
+           
+        </div>
+        <div class="pt-1"><%= detail.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+    </div>
+    </section> <!--  End Category : Nature-->
+
+
+<!-- Start Category 2:  City  -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2> City  </h2>
+     
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(photo.city != '') { %>
+      <% photo.city.forEach(function(detail, index){ %>
+      <a href="/detail/<%= detail._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/uploads/<%= detail.image %>" alt="<%= detail.name %>" loading="lazy">
+        </div>
+        <div class="pt-1"><%= detail.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+    </div>
+    </section> <!--  End  City Category-->
+
+<!-- Category 3 : History -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>History</h2>
+    
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(photo.history != '') { %>
+      <% photo.history.forEach(function(detail, index){ %>
+      <a href="/detail/<%= detail._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/uploads/<%= detail.image %>" alt="<%= detail.name %>" loading="lazy">
+         
+        </div>
+        <div class="pt-1"><%= detail.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+</section>
+ 
+<!-- Category  4: People -->
+<section class="pb-4 pt-4">
+  <div class="d-flex mb-2 align-items-center">
+    <h2>People</h2>
+   
+  </div>
+
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+    <% if(photo.people != '') { %>
+      <% photo.people.forEach(function(detail, index){ %>
+      <a href="/detail/<%= detail._id %>" class="col text-center category__link">
+        <div class="category__img category__img--large shadow">
+          <img src="/uploads/<%= detail.image %>" alt="<%= detail.name %>" loading="lazy">
+         
+        </div>
+        <div class="pt-1"><%= detail.name %></div>
+      </a>
+      <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
+  </div>
+</section>
+
+<!-- End all sections for recent photo categories -->
+
